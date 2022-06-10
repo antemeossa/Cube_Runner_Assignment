@@ -30,6 +30,7 @@ public class PlayerCollisionScript : MonoBehaviour
                 CanvasManager.Instance.detailsPanel.SetActive(true);
                 CanvasManager.Instance.setTexts();
                 CanvasManager.Instance.onDeath();
+                PlayerPrefs.SetInt("level", 1);
 
             }
         }
@@ -55,7 +56,7 @@ public class PlayerCollisionScript : MonoBehaviour
             other.GetComponent<CollectibleScript>().mesh.SetActive(false);
             other.GetComponent<CollectibleScript>().playHpParticles();
             CanvasManager.Instance.setTexts();
-            StartCoroutine(CanvasManager.Instance.shakeIcon(CanvasManager.Instance.hpIcon));
+            
         }
 
         if (other.CompareTag("Magnet"))

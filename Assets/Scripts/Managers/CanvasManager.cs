@@ -42,8 +42,9 @@ public class CanvasManager : MonoBehaviour
         startPanel.SetActive(false);
         nextLevelBtn.gameObject.SetActive(false);
         detailsPanel.SetActive(true);
-        
-        
+        retryBtn.gameObject.SetActive(false);
+
+
     }
 
 
@@ -58,7 +59,6 @@ public class CanvasManager : MonoBehaviour
     public TMP_Text gameLvlText;
     public TMP_Text gameSessionScore;
     public GameObject diamondIcon;
-    public GameObject hpIcon;
     public void startButton()
     {
         
@@ -68,6 +68,7 @@ public class CanvasManager : MonoBehaviour
         startPanel.SetActive(true);
         detailsPanel.SetActive(false);
         PlayerManager.Instance.animator.SetTrigger("GameStarted");
+
     }
 
     public void nextLevelButton()
@@ -103,6 +104,9 @@ public class CanvasManager : MonoBehaviour
         deathpanel.SetActive(true);
         retryBtn.enabled = true;
         startPanel.SetActive(false);
+        GameManager.Instance.forwardSpeed = 0;
+        GameManager.Instance.gameOverBool = true;
+        retryBtn.gameObject.SetActive(true);
     }
 
     public void onSuccess()
